@@ -1,5 +1,5 @@
 const path = require('path');
-const copyWebpackPlugin = require("copy-webpack-plugin");
+const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
     mode: 'development',
@@ -29,15 +29,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        // This plugin will copy resources from the npm package and use them within
-        // the accessible asset directories in the app
-        new copyWebpackPlugin([
-          {
-            from: "./node_modules/@alaskaairux/orion-web-core-style-sheets/fonts",
-            to: "../src/fonts",
-            toType: "dir"
-          }
-        ]),
-      ]
+      optimization: {
+        minimizer: [new uglifyjsWebpackPlugin()]
+    },
 };
