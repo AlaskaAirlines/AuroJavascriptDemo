@@ -10,15 +10,135 @@
 
 <body>
     <script src="./main.js"></script>
-    <div>
+    <div style="float:right;">
+        <h1>Using Web Components</h1>
         <ods-button string="Default state"></ods-button>
+        <br />
         <ods-button string="Default state; context true" context="true"></ods-button>
+        <br />
         <ods-button disabled="true" string="Disabled state"></ods-button>
+        <br />
         <ods-button active="true" string="Active state"></ods-button>
+        <br />
         <ods-button type="secondary" string="Secondary type"></ods-button>
+        <br />
         <ods-button type="secondary" disabled="true" string="Secondary type; disabled state"></ods-button>
+        <br />
         <ods-button active="true" type="secondary" string="Secondary type; active state"></ods-button>
+        <br />
     </div>
+    <div style="float:left;">
+        <h1>Only using the CSS</h1>
+        <div class="ods-button">
+            <button class="button">
+                <span>Default state</span>
+                <span class="dancingDots">
+                    <div class="dots">
+                        <div class="block">
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </span>
+            </button>
+        </div>
+        <br />
+        <div class="ods-button">
+            <button class="button button--enclosed">
+                <span>Default state; context true</span>
+                <span class="dancingDots">
+                    <div class="dots">
+                        <div class="block">
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </span>
+            </button>
+        </div>
+        <br />
+        <div class="ods-button">
+            <button class="button" disabled>
+                <span>Disabled state</span>
+                <span class="dancingDots">
+                    <div class="dots">
+                        <div class="block">
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </span>
+            </button>
+        </div>
+        <br />
+        <div class="ods-button">
+            <button class="button is-active" disabled>
+                <span>Active state</span>
+                <span class="dancingDots is-active">
+                    <div class="dots">
+                        <div class="block">
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </span>
+            </button>
+        </div>
+        <br />
+        <div class="ods-button">
+            <button class="button button--secondary">
+                <span>Secondary type</span>
+                <span class="dancingDots">
+                    <div class="dots">
+                        <div class="block">
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="block">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </span>
+            </button>
+        </div>
+        <br />
 </body>
 
 </html>

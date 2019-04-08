@@ -1,3 +1,7 @@
 // Import generated Design Token variables
 @import "./_TokenVariables.scss";
 @import "./_TokenProperties.scss";
+
+.ods-button {
+    @import "~@alaskaairux/ods-button/altImportsCanonical/style_clean.scss";
+}
