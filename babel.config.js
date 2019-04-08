@@ -4,8 +4,7 @@ module.exports = function (api) {
     "targets": {
       "chrome": "58",
       "ie": "11"
-    },
-    "useBuiltIns": "entry"
+    }
   }]
   ];
   const plugins = [

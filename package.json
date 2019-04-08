@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@alaskaairux/ods-button": "^1.0.516378212",
+    "@alaskaairux/orion-design-tokens": "^1.0.516374233",
     "@babel/polyfill": "^7.4.3",
     "@material/mwc-button": "^0.5.0",
     "@webcomponents/webcomponentsjs": "^2.2.7",
