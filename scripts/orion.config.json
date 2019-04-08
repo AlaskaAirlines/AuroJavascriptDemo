@@ -12,7 +12,7 @@
       ]
     },
     "css": {
-      "transformGroup": "css",
+      "transformGroup": "scss",
       "buildPath": "./src/sass/",
       "files": [
         {

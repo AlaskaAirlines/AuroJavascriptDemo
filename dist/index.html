@@ -2,14 +2,23 @@
 <html>
 
 <head>
-    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script crossorigin="anonymous"
+        src="https://polyfill.io/v3/polyfill.min.js?features=MutationObserver%2Cdefault%2CWeakMap"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
     <title>Getting Started</title>
 </head>
 
 <body>
     <script src="./main.js"></script>
-    <ods-button string="ODS Button"></ods-button>
+    <div>
+        <ods-button string="Default state"></ods-button>
+        <ods-button string="Default state; context true" context="true"></ods-button>
+        <ods-button disabled="true" string="Disabled state"></ods-button>
+        <ods-button active="true" string="Active state"></ods-button>
+        <ods-button type="secondary" string="Secondary type"></ods-button>
+        <ods-button type="secondary" disabled="true" string="Secondary type; disabled state"></ods-button>
+        <ods-button active="true" type="secondary" string="Secondary type; active state"></ods-button>
+    </div>
 </body>
 
 </html>

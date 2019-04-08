@@ -84,6 +84,6 @@ typings/
 .dynamodb/
 dist/main.js
 
-src/sass/_TokenVariables.scss
-src/sass/_TokenProperties.scss
-src/fonts
+_Token*.scss
+_Token*.scss
+fonts/
