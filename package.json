@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "node scripts/styleDictionary.js && webpack"
   },
   "keywords": [],
   "author": "",
@@ -14,15 +14,20 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
     "@alaskaairux/ods-button": "^1.0.516378212",
     "@alaskaairux/orion-design-tokens": "^1.0.516374233",
+    "@alaskaairux/orion-web-core-style-sheets": "^0.3.516376651",
     "@babel/polyfill": "^7.4.3",
-    "@material/mwc-button": "^0.5.0",
-    "@webcomponents/webcomponentsjs": "^2.2.7",
     "core-js": "^2.6.5"
   }
 }

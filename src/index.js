@@ -1,2 +1,2 @@
-import {Button} from "@material/mwc-button"
 import "@alaskaairux/ods-button/ods-button"
+import "./sass/style.scss"

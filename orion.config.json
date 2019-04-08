@@ -1,0 +1,25 @@
+{
+  "source": [ "./node_modules/@alaskaairux/orion-design-tokens/**/*.json" ],
+  "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "./src/sass/",
+      "files": [
+        {
+          "destination": "_TokenVariables.scss",
+          "format": "scss/variables"
+        }
+      ]
+    },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "./src/sass/",
+      "files": [
+        {
+          "destination": "_TokenProperties.scss",
+          "format": "css/variables"
+        }
+      ]
+    }
+  }
+}

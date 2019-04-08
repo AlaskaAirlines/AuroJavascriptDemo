@@ -1,0 +1,15 @@
+// Import generated Design Token variables
+@import "./_TokenVariables.scss";
+@import "./_TokenProperties.scss";
+
+// Import baseline library dependencies
+// Mixins
+@import "~@alaskaairux/orion-web-core-style-sheets/breakpoints";
+
+// Creates baseline output in CSS
+@import "~@alaskaairux/orion-web-core-style-sheets/fonts";
+@import "~@alaskaairux/orion-web-core-style-sheets/normalize";
+@import "~@alaskaairux/orion-web-core-style-sheets/baseline";
+
+// Import Utility classes (will produce CSS in output)
+@import "~@alaskaairux/orion-web-core-style-sheets/utilityClasses";
