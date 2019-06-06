@@ -2,7 +2,7 @@ const path = require('path');
 const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devtool: 'inline-source-map',
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
@@ -11,14 +11,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules\/(?!(@webcomponents\/shadycss|lit-html|@polymer|@vaadin|@lit)\/).*/,
-                options: {
-                    configFile: path.resolve('babel.config.js')
-                }
-            },
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
@@ -29,7 +21,7 @@ module.exports = {
             }
         ]
     },
-      optimization: {
-        minimizer: [new uglifyjsWebpackPlugin()]
-    },
+    resolve: {
+        modules: ['node_modules']
+      }
 };
