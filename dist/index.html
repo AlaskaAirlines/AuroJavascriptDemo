@@ -6,183 +6,29 @@
         src="https://polyfill.io/v3/polyfill.min.js?features=MutationObserver%2Cdefault%2CWeakMap"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
     <title>Getting Started</title>
+    <style>
+    ods-button {
+        margin-bottom: 10px;
+    }
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    </style>
 </head>
 
 <body>
-    <script src="./main.js"></script>
-    <div style="float:right;">
-        <h1>Using Web Components</h1>
-        <ods-button string="Default state"></ods-button>
-        <br />
-        <ods-button string="Default state; context true" context="true"></ods-button>
-        <br />
-        <ods-button disabled="true" string="Disabled state"></ods-button>
-        <br />
-        <ods-button active="true" string="Active state"></ods-button>
-        <br />
-        <ods-button type="secondary" string="Secondary type"></ods-button>
-        <br />
-        <ods-button type="secondary" disabled="true" string="Secondary type; disabled state"></ods-button>
-        <br />
-        <ods-button active="true" type="secondary" string="Secondary type; active state"></ods-button>
-        <br />
+    <h1>Web Components Test</h1>
+    <div class="button-container">
+        <ods-button>Default</ods-button>
+        <ods-button disabled>Disabled</ods-button>
+        <ods-button isactive>Active</ods-button>
+        <ods-button buttontype="secondary">Secondary</ods-button>
+        <ods-button buttontype="secondary" disabled>Secondary Disabled</ods-button>
+        <ods-button active buttontype="secondary">Secondary Active</ods-button>
     </div>
-    <div style="float:left;" class="ods-component-container">
-        <h1>Only using the CSS</h1>
-        <div class="ods-button">
-            <button class="button">
-                <span>Default state</span>
-                <span class="dancingDots">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button button--enclosed">
-                <span>Default state; context true</span>
-                <span class="dancingDots">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button" disabled>
-                <span>Disabled state</span>
-                <span class="dancingDots">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button is-active" disabled>
-                <span>Active state</span>
-                <span class="dancingDots is-active">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button button--secondary">
-                <span>Secondary type</span>
-                <span class="dancingDots">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button button--secondary" disabled>
-                <span>Disabled state</span>
-                <span class="dancingDots">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
-        <div class="ods-button">
-            <button class="button button--secondary is-active" disabled>
-                <span>Active state</span>
-                <span class="dancingDots is-active">
-                    <div class="dots">
-                        <div class="block">
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="block">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </span>
-            </button>
-        </div>
-        <br />
+    <script src="./main.js"></script>
 </body>
 
 </html>
