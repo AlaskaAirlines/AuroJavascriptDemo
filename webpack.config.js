@@ -1,5 +1,7 @@
 const path = require('path');
 const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
+const CompressionPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
@@ -8,6 +10,7 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    plugins: [new CompressionPlugin(), new BundleAnalyzerPlugin()],
     module: {
         rules: [
             {
