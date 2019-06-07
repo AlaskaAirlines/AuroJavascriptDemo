@@ -4,7 +4,8 @@
 <head>
     <script crossorigin="anonymous"
         src="https://polyfill.io/v3/polyfill.min.js?features=MutationObserver%2Cdefault%2CWeakMap"></script>
-    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-bundle.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/custom-elements-es5-adapter.js"></script>
     <title>Getting Started</title>
     <style>
     ods-button {
@@ -19,7 +20,6 @@
 </head>
 
 <body>
-    <h1>Web Components Test</h1>
     <div class="button-container">
         <ods-button>Default</ods-button>
         <ods-button disabled>Disabled</ods-button>
