@@ -2,9 +2,10 @@ const path = require('path');
 const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
+    mode: 'development',
     entry: ['@babel/polyfill', '@webcomponents/template', './src/index.js'],
     output: {
-        filename: 'main.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -41,5 +42,10 @@ module.exports = {
     },
     resolve: {
         modules: ['node_modules']
-      }
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 };
