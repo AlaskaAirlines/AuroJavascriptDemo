@@ -1,8 +1,8 @@
 const path = require('path');
-const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
         filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [new CompressionPlugin(), /*new BundleAnalyzerPlugin(),*/ new HtmlWebpackPlugin({
+    plugins: [new CleanWebpackPlugin(), new CompressionPlugin(), /*new BundleAnalyzerPlugin(),*/ new HtmlWebpackPlugin({
             inject: "body",
             filename: "index.html",
             template: "src/index_template.html"
