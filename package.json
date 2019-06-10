@@ -6,7 +6,8 @@
   "scripts": {
     "buildTokens": "node scripts/styleDictionary.js",
     "copyfiles": "copyfiles -f ./node_modules/@alaskaairux/orion-web-core-style-sheets/fonts/*.* ./src/fonts",
-    "build": "npm run copyfiles | npm run buildTokens | webpack --watch"
+    "build": "npm run copyfiles | npm run buildTokens | webpack --watch",
+    "start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -39,7 +40,8 @@
     "url-loader": "^2.0.0",
     "webpack": "^4.33.0",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.3"
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.1"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",

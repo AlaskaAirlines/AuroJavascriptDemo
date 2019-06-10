@@ -10,7 +10,15 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [new CompressionPlugin(), /*new BundleAnalyzerPlugin()*/],
+    plugins: [new CompressionPlugin(), new BundleAnalyzerPlugin()],
+    devServer: {
+      contentBase: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 9000,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    },
     module: {
         rules: [
             {
