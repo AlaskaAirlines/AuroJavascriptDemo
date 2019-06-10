@@ -87,5 +87,4 @@ dist/main.js
 _Token*.scss
 _Token*.scss
 fonts/
-dist/*.js
-dist/*.gz
+dist/

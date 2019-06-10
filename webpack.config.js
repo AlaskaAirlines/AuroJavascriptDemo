@@ -2,15 +2,20 @@ const path = require('path');
 const uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     entry: ['./src/index.js'],
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [new CompressionPlugin(), new BundleAnalyzerPlugin()],
+    plugins: [new CompressionPlugin(), /*new BundleAnalyzerPlugin(),*/ new HtmlWebpackPlugin({
+            inject: "body",
+            filename: "index.html",
+            template: "src/index_template.html"
+        })],
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,
