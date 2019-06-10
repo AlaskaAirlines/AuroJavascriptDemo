@@ -6,7 +6,7 @@
   "scripts": {
     "buildTokens": "node scripts/styleDictionary.js",
     "copyfiles": "copyfiles -f ./node_modules/@alaskaairux/orion-web-core-style-sheets/fonts/*.* ./src/fonts",
-    "build": "npm run copyfiles | npm run buildTokens | webpack --watch",
+    "build": "npm run copyfiles | npm run buildTokens | webpack",
     "start": "webpack-dev-server"
   },
   "keywords": [],

@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
     mode: 'development',
-    entry: ['@babel/polyfill', '@webcomponents/template', './src/index.js'],
+    entry: ['./src/index.js'],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
@@ -41,11 +41,11 @@ module.exports = {
                             targets: {
                               chrome: '70',
                               edge: '40',
-                              ie: '10',
                               safari: '9',
+                              ie: '10',
                               firefox: '63',
-                              ios: '11',
-                              android: '7',
+                              ios: '9',
+                              android: '4',
                             },
                           },
                         ],
