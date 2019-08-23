@@ -3,16 +3,26 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 const commonConfig = {
   mode: 'production',
   entry: ['./src/index.js'],
-  plugins: [new CleanWebpackPlugin(), new CompressionPlugin(), new BundleAnalyzerPlugin(), new HtmlWebpackPlugin({
-    inject: "body",
-    filename: "index.html",
-    template: "src/index_template.html"
-  }), new webpack.HashedModuleIdsPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new CompressionPlugin(),
+    new BundleAnalyzerPlugin(),
+    new HtmlWebpackPlugin({
+      inject: "body",
+      filename: "index.html",
+      template: "src/index_template.html"
+    }), 
+    new webpack.HashedModuleIdsPlugin(),
+    new CopyPlugin([
+      { from: 'node_modules/@webcomponents/webcomponentsjs', to: 'node_modules/@webcomponents/webcomponentsjs' }
+    ])
+  ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
