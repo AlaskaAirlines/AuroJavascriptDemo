@@ -1,6 +1,9 @@
-// Import generated Design Token variables
-@import "./_TokenVariables.scss";
-@import "./_TokenProperties.scss";
 
+
+@import '../../node_modules/@alaskaairux//orion-design-tokens/dist/tokens/TokenProperties';
+@import '../../node_modules/@alaskaairux//orion-design-tokens/dist/tokens/TokenVariables';
 @import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/breakpoints';
 @import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/baseline';
+
+$asset-font-circular-dir: 'https://resource.alaskaair.net/stylesheets/circular/';
+@import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/fonts';

@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buildTokens": "node scripts/styleDictionary.js",
-    "copyfiles": "copyfiles -f ./node_modules/@alaskaairux/orion-web-core-style-sheets/fonts/*.* ./src/fonts",
-    "build": "npm run copyfiles | npm run buildTokens | webpack",
+    "build": "webpack",
     "start": "webpack-dev-server"
   },
   "keywords": [],
@@ -52,5 +50,12 @@
     "@babel/runtime": "^7.4.5",
     "@webcomponents/template": "^1.4.0",
     "mutation-observer": "^1.0.3"
-  }
+  },
+  "browserslist": [
+    "last 3 chrome version",
+    "last 3 firefox version",
+    "last 3 edge version",
+    "ie 11",
+    "last 2 safari major version"
+  ]
 }

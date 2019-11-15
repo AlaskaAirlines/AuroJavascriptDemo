@@ -9,6 +9,36 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'production',
   entry: ['core-js/modules/es.array.iterator', './src/index.js'],
+  
+  output: {
+    filename: '[name].[contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: [
+          // list all locations that need to be babelized for browser support
+          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, "node_modules/lit-element"),
+          path.resolve(__dirname, "node_modules/lit-html"),
+          path.resolve(__dirname, "node_modules/@alaskaairux")
+        ],
+        use: {
+          loader: 'babel-loader'
+        },
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader'
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new CompressionPlugin(),
@@ -59,34 +89,5 @@ module.exports = {
       },
     }
     
-  },
-  output: {
-    filename: '[name].[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: [
-          // list all locations that need to be babelized for browser support
-          path.resolve(__dirname, "src"),
-          path.resolve(__dirname, "node_modules/lit-element"),
-          path.resolve(__dirname, "node_modules/lit-html"),
-          path.resolve(__dirname, "node_modules/@alaskaairux")
-        ],
-        use: {
-          loader: 'babel-loader'
-        },
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader'
-      }
-    ]
-  },
+  }
 }
