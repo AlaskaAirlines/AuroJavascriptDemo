@@ -5,10 +5,10 @@ module.exports = {
         presets: [
           [
             "@babel/preset-env", {
-              modules: false,
-              useBuiltIns: "entry",
+              useBuiltIns: "usage",
               // This should reasonably target older browsers.
-              targets: "> 0.25%, last 2 versions, Firefox ESR"
+              targets: "> 0.25%, last 2 versions, Firefox ESR",
+              corejs: 3
             }
           ]
         ],

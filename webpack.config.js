@@ -8,19 +8,23 @@ const webpack = require('webpack');
 
 const commonConfig = {
   mode: 'production',
-  entry: ['./src/index.js'],
+  entry: ['core-js/modules/es.array.iterator', './src/index.js'],
   plugins: [
     new CleanWebpackPlugin(),
     new CompressionPlugin(),
-    new BundleAnalyzerPlugin(),
+    //new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: "body",
       filename: "index.html",
       template: "src/index_template.html"
-    }), 
+    }),
     new webpack.HashedModuleIdsPlugin(),
     new CopyPlugin([
-      { from: 'node_modules/@webcomponents/webcomponentsjs', to: 'node_modules/@webcomponents/webcomponentsjs' }
+      {
+        context: 'node_modules/@webcomponents/webcomponentsjs',
+        from: '**/*.js',
+        to: 'webcomponents',
+      }
     ])
   ],
   devServer: {
@@ -35,8 +39,24 @@ const commonConfig = {
     modules: ['node_modules']
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
     }
   }
 }
@@ -109,4 +129,4 @@ const legacyConfig = {
   ...commonConfig
 };
 
-module.exports = [modernConfig, legacyConfig];
+module.exports = [legacyConfig];
