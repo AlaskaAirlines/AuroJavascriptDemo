@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
-const commonConfig = {
+module.exports = {
   mode: 'production',
   entry: ['core-js/modules/es.array.iterator', './src/index.js'],
   plugins: [
@@ -58,45 +58,11 @@ const commonConfig = {
         },
       },
     }
-  }
-}
-
-const modernConfig = {
-  name: "client-modern",
-  output: {
-    filename: '[name].[contenthash].modern.bundle.js',
-    path: path.resolve(__dirname, 'dist', 'modern')
+    
   },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/i,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            envName: "modern" // Points to env.modern in babel.config.js
-          }
-        },
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader'
-      }
-    ]
-  },
-  ...commonConfig
-};
-
-const legacyConfig = {
-  name: "client-legacy",
   output: {
-    filename: '[name].[contenthash].legacy.bundle.js',
-    path: path.resolve(__dirname, 'dist', 'legacy')
+    filename: '[name].[contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -110,10 +76,7 @@ const legacyConfig = {
           path.resolve(__dirname, "node_modules/@alaskaairux")
         ],
         use: {
-          loader: 'babel-loader',
-          options: {
-            envName: "legacy" // Points to env.legacy in babel.config.js
-          }
+          loader: 'babel-loader'
         },
       },
       {
@@ -126,7 +89,4 @@ const legacyConfig = {
       }
     ]
   },
-  ...commonConfig
-};
-
-module.exports = [legacyConfig];
+}
