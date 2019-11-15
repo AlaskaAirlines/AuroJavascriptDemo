@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
@@ -31,7 +32,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
@@ -41,8 +42,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CompressionPlugin(),
-    //new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: "body",
       filename: "index.html",
@@ -55,7 +55,8 @@ module.exports = {
         from: '**/*.js',
         to: 'webcomponents',
       }
-    ])
+    ]),
+    new MiniCssExtractPlugin()
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
