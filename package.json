@@ -13,9 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@alaskaairux/ods-button": "^2.6.1",
-    "@alaskaairux/orion-design-tokens": "^2.3.0",
-    "@alaskaairux/orion-web-core-style-sheets": "^0.3.521926582",
+    "@alaskaairux/ods-button": "^4.0.0",
+    "@alaskaairux/ods-inputoptions": "^1.1.7",
+    "@alaskaairux/orion-design-tokens": "^2.7.3",
+    "@alaskaairux/orion-web-core-style-sheets": "^2.7.1",
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",

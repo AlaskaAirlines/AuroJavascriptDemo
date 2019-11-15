@@ -8,5 +8,9 @@ window.addEventListener('WebComponentsReady', () => {
     // Note: returning the import's promise causes the custom elements
     // polyfill to wait until all definitions are loaded and then upgrade
     // the document in one batch, for better performance.
-    return import("@alaskaairux/ods-button/dist/ods-button");
+    return import('./wcimports');
 });
+
+const button = document.querySelector('ods-button');
+const inputOptions = document.querySelector('ods-inputoptions');
+button.addEventListener('click', () => alert(`selected options:  ${inputOptions.value}`));

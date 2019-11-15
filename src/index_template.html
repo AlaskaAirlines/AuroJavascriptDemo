@@ -5,28 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="webcomponents/webcomponents-loader.js" defer></script>
 
-    <title>Getting Started</title>
-    <style>
-    ods-button {
-        margin-bottom: 10px;
-    }
-    .button-container {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-    </style>
+    <title>Web Components Demo</title>
+
 </head>
 
 <body>
-    <div class="button-container">
-        <ods-button>Default</ods-button>
-        <ods-button disabled>Disabled</ods-button>
-        <ods-button isactive>Active</ods-button>
-        <ods-button buttontype="secondary">Secondary</ods-button>
-        <ods-button buttontype="secondary" disabled>Secondary Disabled</ods-button>
-        <ods-button active buttontype="secondary">Secondary Active</ods-button>
-    </div>
+    <h1>Web Components Demo</h1>
+    <ods-inputoptions id="cbx" type="checkbox" name="cbx" label="Make a choice" for="cbx1" componentData='[
+    { "id": "cbx1", "value": "yes", "label": "Yes" },
+    { "id": "cbx2", "value": "no", "label": "No" },
+    { "id": "cbx3", "value": "maybe", "label": "Maybe" }
+    ]'></ods-inputoptions>
+    <ods-button>Click me</ods-button>
+
 </body>
 
 </html>
