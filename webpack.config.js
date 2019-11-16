@@ -3,13 +3,15 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
-  entry: ['core-js/modules/es.array.iterator', './src/index.js'],
-  
+  entry: [
+    'core-js/modules/es.array.iterator', // needed for dynamic import of the web components
+    './src/index.js'
+  ],
+
   output: {
     filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -17,9 +19,9 @@ module.exports = {
   module: {
     rules: [
       {
+        /* Transpile JS from source and Web Component packages in ES6 */
         test: /\.js$/,
         include: [
-          // list all locations that need to be babelized for browser support
           path.resolve(__dirname, "src"),
           path.resolve(__dirname, "node_modules/lit-element"),
           path.resolve(__dirname, "node_modules/lit-html"),
@@ -30,6 +32,7 @@ module.exports = {
         },
       },
       {
+        /* Process SASS and extract CSS into separate file instead of bundling with JS */
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
@@ -40,14 +43,17 @@ module.exports = {
     ]
   },
   plugins: [
+    /* Cleans the dist folder on build */
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    /* Uncomment to view bundle stats on build */
+    //new BundleAnalyzerPlugin(),
+    /* Add generated JS files to HTML */
     new HtmlWebpackPlugin({
       inject: "body",
       filename: "index.html",
       template: "src/index_template.html"
     }),
-    new webpack.HashedModuleIdsPlugin(),
+    /* Copies the webcomponents polyfills to the output directory */
     new CopyPlugin([
       {
         context: 'node_modules/@webcomponents/webcomponentsjs',
@@ -55,21 +61,13 @@ module.exports = {
         to: 'webcomponents',
       }
     ]),
+    /* Used to extract CSS into separate file instead of bundling with JS */
     new MiniCssExtractPlugin()
   ],
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  },
-  resolve: {
-    modules: ['node_modules']
-  },
+  /* Optional optimization -- split output into chunks based on npm package name */
   optimization: {
     runtimeChunk: 'single',
+    moduleIds: 'hashed',
     splitChunks: {
       chunks: 'all',
       maxInitialRequests: Infinity,
@@ -88,6 +86,5 @@ module.exports = {
         },
       },
     }
-    
   }
 }
