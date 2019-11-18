@@ -8,7 +8,7 @@ window.addEventListener('WebComponentsReady', () => {
     // Note: returning the import's promise causes the custom elements
     // polyfill to wait until all definitions are loaded and then upgrade
     // the document in one batch, for better performance.
-    return import('./wcimports');
+    return import('./webcomponents');
 });
 
 const button = document.querySelector('ods-button');

@@ -4,6 +4,12 @@
 @import '../../node_modules/@alaskaairux//orion-design-tokens/dist/tokens/TokenVariables';
 @import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/breakpoints';
 @import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/baseline';
+@import "../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/componentSupport/containedButtons";
 
 $asset-font-circular-dir: 'https://resource.alaskaair.net/stylesheets/circular/';
 @import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/fonts';
+
+body { 
+    width: 80%;
+    margin: auto;
+}

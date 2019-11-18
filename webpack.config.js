@@ -11,7 +11,7 @@ module.exports = {
     'core-js/modules/es.array.iterator', // needed for dynamic import of the web components
     './src/index.js'
   ],
-
+  /* Include hash of file contents in filename for caching purposes and output files to dist directory */
   output: {
     filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -47,7 +47,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     /* Uncomment to view bundle stats on build */
     //new BundleAnalyzerPlugin(),
-    /* Add generated JS files to HTML */
+    /* Adds generated JS files to HTML */
     new HtmlWebpackPlugin({
       inject: "body",
       filename: "index.html",
