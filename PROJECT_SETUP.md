@@ -1,4 +1,5 @@
-# OrionJavascriptDemo
+# Web Component Javascript Demo
+
 An example Javascript project with Orion Components integrated. This app runs and works in all Alaska-supported browsers. Explore the project source to see the Orion Components being used in a frameworkless environment.
 
 Below are instructions for adding Orion compatibility to your project. A familiarity with modern Javascript development and bundlers such as Webpack is expected.
