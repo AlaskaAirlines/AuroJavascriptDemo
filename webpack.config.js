@@ -1,9 +1,10 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
@@ -22,14 +23,14 @@ module.exports = {
         /* Transpile JS from source and Web Component packages in ES6 */
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, "src"),
-          path.resolve(__dirname, "node_modules/lit-element"),
-          path.resolve(__dirname, "node_modules/lit-html"),
-          path.resolve(__dirname, "node_modules/@alaskaairux")
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/lit-element'),
+          path.resolve(__dirname, 'node_modules/lit-html'),
+          path.resolve(__dirname, 'node_modules/@alaskaairux')
         ],
         use: {
           loader: 'babel-loader'
-        },
+        }
       },
       {
         /* Process SASS and extract CSS into separate file instead of bundling with JS */
@@ -49,42 +50,19 @@ module.exports = {
     //new BundleAnalyzerPlugin(),
     /* Adds generated JS files to HTML */
     new HtmlWebpackPlugin({
-      inject: "body",
-      filename: "index.html",
-      template: "src/index_template.html"
+      inject: 'body',
+      filename: 'index.html',
+      template: 'src/index_template.html'
     }),
     /* Copies the webcomponents polyfills to the output directory */
     new CopyPlugin([
       {
         context: 'node_modules/@webcomponents/webcomponentsjs',
         from: '**/*.js',
-        to: 'webcomponents',
+        to: 'webcomponents'
       }
     ]),
     /* Used to extract CSS into separate file instead of bundling with JS */
     new MiniCssExtractPlugin()
-  ],
-  /* Optional optimization -- split output into chunks based on npm package name */
-  optimization: {
-    runtimeChunk: 'single',
-    moduleIds: 'hashed',
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    }
-  }
-}
+  ]
+};
