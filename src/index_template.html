@@ -1,26 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="webcomponents/webcomponents-loader.js" defer></script>
 
     <title>Web Components Demo</title>
+  </head>
 
-</head>
-
-<body>
-    <h1>Web Components Demo</h1>
-    <ods-inputoptions id="cbx" type="checkbox" name="cbx" label="Make a choice" for="cbx1" componentData='[
-    { "id": "cbx1", "value": "yes", "label": "Yes" },
-    { "id": "cbx2", "value": "no", "label": "No" },
-    { "id": "cbx3", "value": "maybe", "label": "Maybe" }
-    ]'></ods-inputoptions>
-    <div class='ods-containedButtons'>
-        <ods-button responsive>Click me</ods-button>
-        <ods-button responsive flowtype='complete'>Finish</ods-button>
-    </div>
-
-</body>
-
+  <body>
+    <main>
+      <h1 class="heading heading--display">Web Component Demo</h1>
+      <auro-checkbox-group required>
+        <span slot="legend" id="checkbox-legend"></span>
+        <auro-checkbox id="cbx1" name="cbxDemo" value="yes" required>
+          Yes
+        </auro-checkbox>
+        <auro-checkbox id="cbx2" name="cbxDemo" value="no" required>
+          No
+        </auro-checkbox>
+      </auro-checkbox-group>
+      <auro-button id="toast-button">Toast</auro-button>
+      <auro-button id="change-button">Change Toaster</auro-button>
+    </main>
+  </body>
 </html>

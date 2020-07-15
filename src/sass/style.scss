@@ -1,15 +1,20 @@
+@import '~@alaskaairux/orion-design-tokens/dist/tokens/SCSSVariables'; // Auro design tokens as Sass variables, required to import WCSS
+@import '~@alaskaairux/orion-design-tokens/dist/tokens/SassCustomProperties'; // Auro design tokens as CSS Custom Properties, used by auro-* components
+@import '~@alaskaairux/orion-design-tokens/dist/tokens/TokenProperties'; // Deprecated Orion design tokens for ods-* components
 
+@import '~@alaskaairux/orion-web-core-style-sheets/dist/breakpoints';
+@import '~@alaskaairux/orion-web-core-style-sheets/dist/fonts';
+@import '~@alaskaairux/orion-web-core-style-sheets/dist/normalize';
+@import '~@alaskaairux/orion-web-core-style-sheets/dist/essentials';
+@import '~@alaskaairux/orion-web-core-style-sheets/dist/headings';
+@import '~@alaskaairux/ods-toast/dist/toaster.css';
 
-@import '../../node_modules/@alaskaairux//orion-design-tokens/dist/tokens/TokenProperties';
-@import '../../node_modules/@alaskaairux//orion-design-tokens/dist/tokens/TokenVariables';
-@import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/breakpoints';
-@import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/baseline';
-@import "../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/componentSupport/containedButtons";
-
-$asset-font-circular-dir: 'https://resource.alaskaair.net/stylesheets/circular/';
-@import '../../node_modules/@alaskaairux/orion-web-core-style-sheets/dist/fonts';
-
-body { 
-    width: 80%;
-    margin: auto;
+main {
+  display: block; /* for IE11 */
+  position: relative;
+  max-width: 56em;
+  background-color: white;
+  padding: 2em;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
