@@ -1,5 +1,7 @@
 # Web Component Javascript Demo
 
+![Travis (.org)](https://img.shields.io/travis/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) 
+
 An example Javascript project with Auro Components integrated. This app runs and works in all Alaska-supported browsers. Explore the project source to see the Auro Components being used in a frameworkless environment.
 
 Below are instructions for adding Auro compatibility to your project. A familiarity with modern Javascript development and bundlers such as Webpack is expected.
@@ -20,9 +22,16 @@ Below is a quick outline of how this project is set up to consume the Auro Compo
 
 The following steps will let you start using Web Components in your project across all supported browsers.
 
-1. Install the necessary packages by running `npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens focus-visible @webcomponents/webcomponentsjs` in a terminal. `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
+1. Install the necessary packages by running the following in the terminal.
 
-1. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
+```
+npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens 
+focus-visible @webcomponents/webcomponentsjs
+``` 
+
+`@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
+
+2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
 
    ```html
    <script src="webcomponents/webcomponents-loader.js" defer></script>
