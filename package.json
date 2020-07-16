@@ -69,6 +69,7 @@
           "changelogTitle": "# Semantic Release Automated Changelog"
         }
       ],
+      "@semantic-release/npm",
       [
         "@semantic-release/git",
         {
