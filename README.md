@@ -24,14 +24,18 @@ The following steps will let you start using Web Components in your project acro
 
 1. Install the necessary packages by running the following in the terminal.
 
-```
-npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens 
-focus-visible @webcomponents/webcomponentsjs
-``` 
+    ```
+    npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens 
+    focus-visible @webcomponents/webcomponentsjs
+    ``` 
 
-`@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
+    `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
 
-2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
+2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN 
+
+    > (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) 
+
+    or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
 
    ```html
    <script src="webcomponents/webcomponents-loader.js" defer></script>
