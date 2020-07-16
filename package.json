@@ -51,13 +51,6 @@
     "husky": "^4.2.5",
     "semantic-release": "^17.1.1"
   },
-  "browserslist": [
-    "last 3 chrome version",
-    "last 3 firefox version",
-    "last 3 edge version",
-    "ie 11",
-    "last 2 safari major version"
-  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm test",
@@ -76,7 +69,6 @@
           "changelogTitle": "# Semantic Release Automated Changelog"
         }
       ],
-      "@semantic-release/npm",
       [
         "@semantic-release/git",
         {
@@ -96,5 +88,12 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "browserslist": [
+    "last 3 chrome version",
+    "last 3 firefox version",
+    "last 3 edge version",
+    "ie 11",
+    "last 2 safari major version"
+  ]
 }
