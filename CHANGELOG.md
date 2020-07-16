@@ -1,5 +1,13 @@
 # Semantic Release Automated Changelog
 
+## [1.0.1](https://github.com/AlaskaAirlines/AuroJavascriptDemo/compare/v1.0.0...v1.0.1) (2020-07-16)
+
+
+### Bug Fixes
+
+* add npm for auto versioning ([6402a5e](https://github.com/AlaskaAirlines/AuroJavascriptDemo/commit/6402a5e5b20087153815527d54294e25a5c58c02))
+* remove npm again; auto versioning not working ([d0a3a6a](https://github.com/AlaskaAirlines/AuroJavascriptDemo/commit/d0a3a6a709985c10adcb6e6acbfdf3781f28bab9))
+
 # 1.0.0 (2020-07-16)
 
 
