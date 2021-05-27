@@ -1,6 +1,6 @@
 # Web Component Javascript Demo
 
-![Travis (.org)](https://img.shields.io/travis/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) 
+![Travis (.org)](https://img.shields.io/travis/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge)
 
 An example Javascript project with Auro Components integrated. This app runs and works in all Alaska-supported browsers. Explore the project source to see the Auro Components being used in a frameworkless environment.
 
@@ -14,7 +14,7 @@ At a bare minimum, you need:
 
 1. Any web components imported after the polyfills have been loaded (look for WebComponentsReady event later in the documentation).
 
-To accomplish all of this, you will almost certainly need a module bundler such as Webpack to package the Web Components and dependencies. If supporting legacy browsers such as IE11, you will also need to transpile your code using Babel.
+To accomplish all of this, you will almost certainly need a module bundler such as Webpack to package the Web Components and dependencies.
 
 Below is a quick outline of how this project is set up to consume the Auro Components.
 
@@ -25,15 +25,15 @@ The following steps will let you start using Web Components in your project acro
 1. Install the necessary packages by running the following in the terminal.
 
     ```
-    npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens 
+    npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens
     focus-visible @webcomponents/webcomponentsjs
-    ``` 
+    ```
 
     `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
 
-2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN 
+2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN
 
-    > (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) 
+    > (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js)
 
     or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
 
@@ -66,30 +66,3 @@ The following steps will let you start using Web Components in your project acro
 1. You can now use `auro-button` in your HTML. See the example in `index_template.html`.
 
 1. Run the application with `npm start`. The button should render and trigger an alert when clicked.
-
-## Setting up your project to work with IE11
-
-Some additional steps must be taken to get Web Components working in IE11.
-
-1. Add `"ie 11"` to your browserslist configuration. This example project has the browserslist in `package.json`.
-
-1. Use Babel to transpile the Web Component code to ES5. The Web Component packages are shipped as ES6 Javascript that IE11 cannot interpret. If you are using Webpack, you need to add a rule to transpile your source and specific node_modules to ES5. The relevant code is below, but see the `webpack.config.js` for the example in context.
-
-   ```js
-   {
-       test: /\.js$/,
-       include: [
-           path.resolve(__dirname, "src"),
-           path.resolve(__dirname, "node_modules/lit-element"),
-           path.resolve(__dirname, "node_modules/lit-html"),
-           path.resolve(__dirname, "node_modules/@alaskaairux")
-       ],
-       use: {
-           loader: 'babel-loader'
-       },
-   }
-   ```
-
-   You also need to add a Babel config to your project. See `babel.config.js` for an example.
-
-You should now be able to run the app in IE11 without errors. Run `npm start` in the terminal and view the application in IE11.
