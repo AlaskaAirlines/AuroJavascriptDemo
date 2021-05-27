@@ -32,6 +32,7 @@
     "css-loader": "^3.6.0",
     "focus-visible": "^5.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
@@ -48,14 +49,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.0.5",
-    "husky": "^4.2.5",
     "semantic-release": "^17.1.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "release": {
     "branch": "master",
