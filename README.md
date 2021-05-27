@@ -8,11 +8,9 @@ Below are instructions for adding Auro compatibility to your project. A familiar
 
 At a bare minimum, you need:
 
-1. `webcomponents-loader.js` referenced in the head of your HTML.
-
 1. The Design Token CSS custom properties included in your CSS.
 
-1. Any web components imported after the polyfills have been loaded (look for WebComponentsReady event later in the documentation).
+1. Any web components imported
 
 To accomplish all of this, you will almost certainly need a module bundler such as Webpack to package the Web Components and dependencies.
 
@@ -26,33 +24,15 @@ The following steps will let you start using Web Components in your project acro
 
     ```
     npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens
-    focus-visible @webcomponents/webcomponentsjs
+    focus-visible
     ```
 
-    `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
+    `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively.
 
-2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN
-
-    > (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js)
-
-    or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
-
-   ```html
-   <script src="webcomponents/webcomponents-loader.js" defer></script>
-   ```
-
-1. Add a file called `webcomponents.js` in the `src` directory. You will add any additional Web Component imports here. After you import a component here, you can use it throughout the rest of your application. For now, just import `auro-button`.
+1. In `index.js` in the `src` directory you will need to add imports for all of the components used such as `auro-button`.
 
    ```js
    import '@alaskaairux/ods-button/dist/auro-button';
-   ```
-
-1. Next, update your entrypoint (this example uses `index.js`) to import the Auro Components once the polyfills have loaded. This guarantees that Web Components are not defined until the browser polyfills are ready.
-
-   ```js
-   window.addEventListener('WebComponentsReady', () => {
-     return import('./webcomponents');
-   });
    ```
 
 1. The design tokens need to be available as CSS Custom Properties for the component to render. This example project imports them in `sass\style.scss` which is then processed by Webpack.

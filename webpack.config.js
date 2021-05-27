@@ -54,14 +54,6 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index_template.html'
     }),
-    /* Copies the webcomponents polyfills to the output directory */
-    new CopyPlugin([
-      {
-        context: 'node_modules/@webcomponents/webcomponentsjs',
-        from: '**/*.js',
-        to: 'webcomponents'
-      }
-    ]),
     /* Used to extract CSS into separate file instead of bundling with JS */
     new MiniCssExtractPlugin()
   ]
