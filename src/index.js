@@ -1,55 +1,94 @@
 import './sass/style.scss';
-import Swipe from '@alaskaairux/ods-toast/dist/swipe.js';
-import Toaster from '@alaskaairux/ods-toast/dist/toaster';
-
-window.Swipe = Swipe;
-const toaster = new Toaster();
 
 /* Import any web components used here */
-import '@alaskaairux/ods-button/dist/auro-button';
-import '@alaskaairux/auro-checkbox';
-import '@alaskaairux/auro-checkbox/dist/auro-checkbox-group';
-import '@alaskaairux/ods-toast';
+import '@alaskaairux/auro-button';
+import "@alaskaairux/auro-checkbox";
+import "@alaskaairux/auro-checkbox/dist/auro-checkbox-group";
+import '@alaskaairux/auro-header';
+import '@alaskaairux/auro-input';
+import "@alaskaairux/auro-radio";
+import "@alaskaairux/auro-radio/dist/auro-radio-group";
 
-function getCheckboxLegend(selectedValues) {
-  return `Your Choice: ${JSON.stringify(selectedValues)}`;
-}
+let formData = {};
 
-function getSelectedCheckboxValues() {
-  return Array.from(checkboxes)
-    .filter((cbx) => cbx.checked)
-    .map((cbx) => cbx.value);
-}
+const fNameEl = document.querySelector('#fName');
+fNameEl.addEventListener('input', (e) => {
+  setValue(e.target.id, e.target.value);
+});
 
-function updateCheckboxLegend(e) {
-  const selectedValues = getSelectedCheckboxValues();
-  checkboxLegend.textContent = getCheckboxLegend(selectedValues);
-}
+const lNameEl = document.querySelector('#lName');
+lNameEl.addEventListener('input', (e) => {
+  setValue(e.target.id, e.target.value);
+});
 
-function changeToastButtonType() {
-  if (buttonType === 'primary') {
-    toastButton.setAttribute('secondary', true);
-    buttonType = 'secondary';
+const flierGroupEl = document.querySelector('#flierGroup');
+flierGroupEl.addEventListener('change', (e) => {
+  setValue('flier', e.target.value === 'true');
+});
+
+const destintationGroupEl = document.querySelector('#destinationGroup');
+destintationGroupEl.addEventListener('change', (e) => {
+  calcDestinations(e.target.value, e.target.checked);
+})
+
+const submitButtonEl = document.querySelector('#submitButton');
+submitButtonEl.addEventListener('click', () =>{
+  handleSubmit();
+})
+
+const formDataEl = document.querySelector('#formData');
+
+function setValue(field, value) {
+  if (value === undefined) {
+    delete formData[field];
   } else {
-    toastButton.removeAttribute('secondary');
-    buttonType = 'primary';
+    formData[field] = value;
+  }
+
+  const hasfName = formData.hasOwnProperty('fName') && formData.fName.length > 0;
+  const haslName = formData.hasOwnProperty('lName') && formData.lName.length > 0;
+  const hasFlier = formData.hasOwnProperty('flier') && typeof formData.flier === 'boolean';
+
+  if (hasFlier && formData.flier) {
+    destintationGroupEl.classList.remove('util_displayHidden');
+  } else {
+    destintationGroupEl.classList.add('util_displayHidden');
+  }
+
+  if (hasfName && haslName && hasFlier) {
+    submitButtonEl.removeAttribute('disabled');
+  } else {
+    if (!submitButtonEl.hasAttribute('disabled')) {
+      submitButtonEl.setAttribute('disabled', true);
+    }
+  }
+
+  formDataEl.innerHTML = JSON.stringify(formData);
+}
+
+function calcDestinations(destination, state) {
+  let d = []
+
+  if (formData.hasOwnProperty('destinations') && formData.destinations.length > 0) {
+    d = formData.destinations;
+  }
+
+  if (d.includes(destination) && !state) {
+    d.splice(d.indexOf(destination), 1);
+  } else if (state) {
+    d.push(destination);
+  }
+
+  if (d.length > 0) {
+    setValue('destinations', d)
+  } else {
+    if (formData.hasOwnProperty('destinations')) {
+      setValue('destinations', undefined);
+    }
   }
 }
 
-function toast() {
-  const message = buttonType === 'primary' ? 'message 1' : 'message 2';
-  toaster.add(message);
+function handleSubmit() {
+  console.warn('Form JSON Data:', formData);
+  alert(`Form JSON Data: ` + JSON.stringify(formData));
 }
-
-let buttonType = 'primary';
-const checkboxLegend = document.querySelector('#checkbox-legend');
-const checkboxGroup = document.querySelector('auro-checkbox-group');
-const checkboxes = document.querySelectorAll('auro-checkbox');
-const changeButton = document.querySelector('#change-button');
-const toastButton = document.querySelector('#toast-button');
-
-checkboxGroup.addEventListener('change', updateCheckboxLegend);
-changeButton.addEventListener('click', changeToastButtonType);
-toastButton.addEventListener('click', toast);
-
-updateCheckboxLegend();
