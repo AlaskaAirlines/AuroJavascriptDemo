@@ -6,43 +6,110 @@ An example Javascript project with Auro Components integrated. This app runs and
 
 Below are instructions for adding Auro compatibility to your project. A familiarity with modern Javascript development and bundlers such as Webpack is expected.
 
-At a bare minimum, you need:
+## Example App API
 
-1. The Design Token CSS custom properties included in your CSS.
+Depending on your local configuration, this project will work with either `yarn` or `npm`. For the sake of documentation, the commands will default to `npm`.
 
-1. Any web components imported
+Within the root directory of the app, you can:
 
-To accomplish all of this, you will almost certainly need a module bundler such as Webpack to package the Web Components and dependencies.
+| Command | Description
+|---|---
+| npm start | Runs the app in the development mode.<br />Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+||Browser sync and linting in the CLI is enabled.
+| npm test | Launches the test runner in the interactive watch mode
+|| See [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| npm build | Production build in the `build` folder.<br>Optimized, minimized and prepared for deployment
+||See [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Below is a quick outline of how this project is set up to consume the Auro Components.
 
-## Setting up your project to use Auro Web Components
+## Setting up new React project with Auro Web Components
 
-The following steps will let you start using Web Components in your project across all supported browsers.
+The following steps will let you start using Web Components in your React application across all supported browsers.
 
-1. Install the necessary packages by running the following in the terminal.
+### Install
 
-    ```
-    npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens
-    focus-visible
-    ```
+The following command will install
+* [auro-button](http://auro.alaskaair.com/components/auro/button)
+* [auro-checkbox](https://auro.alaskaair.com/components/auro/checkbox)
+* [auro-header](https://auro.alaskaair.com/components/auro/header)
+* [auro-input](https://auro.alaskaair.com/components/auro/input)
+* [auro-radio](https://auro.alaskaair.com/components/auro/radio)
+* [design tokens](http://auro.alaskaair.com/getting-started/developers/design-tokens)
+* [focus-visible](https://github.com/WICG/focus-visible)
 
-    `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively.
+```js
+$ npm install --save-dev @alaskaairux/auro-button @alaskaairux/auro-checkbox @alaskaairux/auro-header @alaskaairux/auro-radio @alaskaairux/design-tokens focus-visible
+```
 
-1. In `index.js` in the `src` directory you will need to add imports for all of the components used such as `auro-button`.
+## Importing WC Style Sheets
 
-   ```js
-   import '@alaskaairux/ods-button/dist/auro-button';
-   ```
+WC Style Sheets (WCSS) is a responsive, mobile-first collection of styles and tools designed to make it quick and simple for developers to create web experiences using the Auro Design Language.
 
-1. The design tokens need to be available as CSS Custom Properties for the component to render. This example project imports them in `sass\style.scss` which is then processed by Webpack.
+This resource is built using Sass, [Dart Sass](https://www.npmjs.com/package/sass) is the preferred library for Create React App.
 
-   ```scss
-   @import '~@alaskaairux/orion-design-tokens/dist/tokens/SCSSVariables';
-   ```
+```
+$ npm i sass -D
+```
 
-1. You will need to use a module bundler to bundle the Web Components with the rest of your application. See this project for an example with Webpack, including an annotated `webpack.config.js`.
+### Install WC Style Sheets.
 
-1. You can now use `auro-button` in your HTML. See the example in `index_template.html`.
+```javascript
+$ npm i @alaskaairux/webcorestylesheets
+```
 
-1. Run the application with `npm start`. The button should render and trigger an alert when clicked.
+After installing `sass`, rename `index.css` to `index.scss` and rename the import in `index.js`.
+
+### Importing the stylesheets
+
+Place global stylesheet imports into `src/sass/style.scss`.
+
+At the top of the document, import basic dependencies:
+
+```scss
+@import '~@alaskaairux/design-tokens/dist/tokens/SCSSVariables';
+@import "~@alaskaairux/web-core-style-sheets/dist/breakpoints";
+@import '~@alaskaairux/web-core-style-sheets/dist/fonts';
+@import "~@alaskaairux/web-core-style-sheets/dist/normalize";
+@import "~@alaskaairux/web-core-style-sheets/dist/essentials";
+@import "~@alaskaairux/web-core-style-sheets/dist/utilityClasses";
+```
+
+For more information about these files, be sure to see [the full API](https://alaskaairlines.github.io/WebCoreStyleSheets/), including the various Utility Selectors currently available.
+
+## Icon Library
+
+The Icons package contains standard set of SVG icons that can be used with any web project.
+
+```Javascript
+$ npm i @alaskaairux/icons -D
+```
+
+Further documentation can be found in the repository's [README](https://auro.alaskaair.com/icons/install) file.
+
+### Add the components
+
+The following is an example of how to add one of the components imported earlier in this document. Following this example, you can add all of the components necessary to achieve your template design.
+
+In `src/index.js` you will need to add imports for all of the components used.
+
+```js
+import '@alaskaairux/auro-button';
+import "@alaskaairux/auro-checkbox";
+import "@alaskaairux/auro-checkbox/dist/auro-checkbox-group";
+import '@alaskaairux/auro-header';
+import '@alaskaairux/auro-input';
+import "@alaskaairux/auro-radio";
+import "@alaskaairux/auro-radio/dist/auro-radio-group";
+```
+
+In `src/index_template.html`, add a reference to `auro-button` and all other components.
+
+```html
+<auro-button>Submit</auro-button>
+```
+
+Run the application with `npm start`. The button should render and trigger an alert when clicked.
+
+## Development
+
+This project uses Semantic Release with Conventional Commits. Please be sure to review our [Contributing Guidelines](https://auro.alaskaair.com/getting-started/developers/contributing) for more info.
