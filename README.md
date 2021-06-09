@@ -1,95 +1,111 @@
 # Web Component Javascript Demo
 
-![Travis (.org)](https://img.shields.io/travis/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) 
+![Travis (.org)](https://img.shields.io/travis/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/AlaskaAirlines/AuroJavascriptDemo?style=for-the-badge)
 
 An example Javascript project with Auro Components integrated. This app runs and works in all Alaska-supported browsers. Explore the project source to see the Auro Components being used in a frameworkless environment.
 
 Below are instructions for adding Auro compatibility to your project. A familiarity with modern Javascript development and bundlers such as Webpack is expected.
 
-At a bare minimum, you need:
+## Example App API
 
-1. `webcomponents-loader.js` referenced in the head of your HTML.
+Depending on your local configuration, this project will work with either `yarn` or `npm`. For the sake of documentation, the commands will default to `npm`.
 
-1. The Design Token CSS custom properties included in your CSS.
+Within the root directory of the app, you can:
 
-1. Any web components imported after the polyfills have been loaded (look for WebComponentsReady event later in the documentation).
+| Command | Description
+|---|---
+| npm start | Runs the app in the development mode.<br />Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+||Browser sync and linting in the CLI is enabled.
+| npm build | Production build in the `build` folder.<br>Optimized, minimized and prepared for deployment
 
-To accomplish all of this, you will almost certainly need a module bundler such as Webpack to package the Web Components and dependencies. If supporting legacy browsers such as IE11, you will also need to transpile your code using Babel.
+## Setting up new JavaScript project with Auro Web Components
 
-Below is a quick outline of how this project is set up to consume the Auro Components.
+The following steps will let you start using Web Components in your JavaScript application across all supported browsers.
 
-## Setting up your project to use Auro Web Components
+### Install
 
-The following steps will let you start using Web Components in your project across all supported browsers.
+The following command will install
+* [auro-button](http://auro.alaskaair.com/components/auro/button)
+* [auro-checkbox](https://auro.alaskaair.com/components/auro/checkbox)
+* [auro-header](https://auro.alaskaair.com/components/auro/header)
+* [auro-input](https://auro.alaskaair.com/components/auro/input)
+* [auro-radio](https://auro.alaskaair.com/components/auro/radio)
+* [design tokens](http://auro.alaskaair.com/getting-started/developers/design-tokens)
+* [focus-visible](https://github.com/WICG/focus-visible)
 
-1. Install the necessary packages by running the following in the terminal.
+```js
+$ npm install --save-dev @alaskaairux/auro-button @alaskaairux/auro-checkbox @alaskaairux/auro-header @alaskaairux/auro-radio @alaskaairux/design-tokens focus-visible
+```
 
-    ```
-    npm install --save-dev @alaskaairux/ods-button @alaskaairux/orion-design-tokens 
-    focus-visible @webcomponents/webcomponentsjs
-    ``` 
+## Importing WC Style Sheets
 
-    `@alaskaairux/ods-button` is the button component itself. `@alaskaairux/orion-design-tokens` and `focus-visible` are required dependencies for tokens and focus styles, respectively. `@webcomponents/webcomponentsjs` contains polyfills for browsers that don't support Web Components.
+WC Style Sheets (WCSS) is a responsive, mobile-first collection of styles and tools designed to make it quick and simple for developers to create web experiences using the Auro Design Language.
 
-2. Add a reference to `webcomponents-loader.js` in the head of your HTML. This examples places the loader in `src\index_template.html`. This will detect whether the user's browser supports Web Components and will polyfill any required features. You can load this file from a CDN 
+This resource is built using Sass, [Dart Sass](https://www.npmjs.com/package/sass) is the preferred library for creating a JavaScript app.
 
-    > (e.g. https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js) 
+```
+$ npm i sass -D
+```
 
-    or copy the polyfills into your output directory yourself. This project does the latter using `copy-webpack-plugin` in the webpack config. However you load the polyfills, make sure you include the `defer` attribute -- conflicting polyfills may prevent the app from loading otherwise.
+### Install WC Style Sheets.
 
-   ```html
-   <script src="webcomponents/webcomponents-loader.js" defer></script>
-   ```
+```javascript
+$ npm i @alaskaairux/webcorestylesheets
+```
 
-1. Add a file called `webcomponents.js` in the `src` directory. You will add any additional Web Component imports here. After you import a component here, you can use it throughout the rest of your application. For now, just import `auro-button`.
+After installing `sass`, rename `index.css` to `index.scss` and rename the import in `index.js`.
 
-   ```js
-   import '@alaskaairux/ods-button/dist/auro-button';
-   ```
+### Importing the stylesheets
 
-1. Next, update your entrypoint (this example uses `index.js`) to import the Auro Components once the polyfills have loaded. This guarantees that Web Components are not defined until the browser polyfills are ready.
+Place global stylesheet imports into `src/sass/style.scss`.
 
-   ```js
-   window.addEventListener('WebComponentsReady', () => {
-     return import('./webcomponents');
-   });
-   ```
+At the top of the document, import basic dependencies:
 
-1. The design tokens need to be available as CSS Custom Properties for the component to render. This example project imports them in `sass\style.scss` which is then processed by Webpack.
+```scss
+@import '~@alaskaairux/design-tokens/dist/tokens/SCSSVariables';
+@import "~@alaskaairux/web-core-style-sheets/dist/breakpoints";
+@import '~@alaskaairux/web-core-style-sheets/dist/fonts';
+@import "~@alaskaairux/web-core-style-sheets/dist/normalize";
+@import "~@alaskaairux/web-core-style-sheets/dist/essentials";
+@import "~@alaskaairux/web-core-style-sheets/dist/utilityClasses";
+```
 
-   ```scss
-   @import '~@alaskaairux/orion-design-tokens/dist/tokens/SCSSVariables';
-   ```
+For more information about these files, be sure to see [the full API](https://alaskaairlines.github.io/WebCoreStyleSheets/), including the various Utility Selectors currently available.
 
-1. You will need to use a module bundler to bundle the Web Components with the rest of your application. See this project for an example with Webpack, including an annotated `webpack.config.js`.
+## Icon Library
 
-1. You can now use `auro-button` in your HTML. See the example in `index_template.html`.
+The Icons package contains standard set of SVG icons that can be used with any web project.
 
-1. Run the application with `npm start`. The button should render and trigger an alert when clicked.
+```Javascript
+$ npm i @alaskaairux/icons -D
+```
 
-## Setting up your project to work with IE11
+Further documentation can be found in the repository's [README](https://auro.alaskaair.com/icons/install) file.
 
-Some additional steps must be taken to get Web Components working in IE11.
+### Add the components
 
-1. Add `"ie 11"` to your browserslist configuration. This example project has the browserslist in `package.json`.
+The following is an example of how to add one of the components imported earlier in this document. Following this example, you can add all of the components necessary to achieve your template design.
 
-1. Use Babel to transpile the Web Component code to ES5. The Web Component packages are shipped as ES6 Javascript that IE11 cannot interpret. If you are using Webpack, you need to add a rule to transpile your source and specific node_modules to ES5. The relevant code is below, but see the `webpack.config.js` for the example in context.
+In `src/index.js` you will need to add imports for all of the components used.
 
-   ```js
-   {
-       test: /\.js$/,
-       include: [
-           path.resolve(__dirname, "src"),
-           path.resolve(__dirname, "node_modules/lit-element"),
-           path.resolve(__dirname, "node_modules/lit-html"),
-           path.resolve(__dirname, "node_modules/@alaskaairux")
-       ],
-       use: {
-           loader: 'babel-loader'
-       },
-   }
-   ```
+```js
+import '@alaskaairux/auro-button';
+import "@alaskaairux/auro-checkbox";
+import "@alaskaairux/auro-checkbox/dist/auro-checkbox-group";
+import '@alaskaairux/auro-header';
+import '@alaskaairux/auro-input';
+import "@alaskaairux/auro-radio";
+import "@alaskaairux/auro-radio/dist/auro-radio-group";
+```
 
-   You also need to add a Babel config to your project. See `babel.config.js` for an example.
+In `src/index_template.html`, add a reference to `auro-button` and all other components.
 
-You should now be able to run the app in IE11 without errors. Run `npm start` in the terminal and view the application in IE11.
+```html
+<auro-button>Submit</auro-button>
+```
+
+Run the application with `npm start`. The button should render and trigger an alert when clicked.
+
+## Development
+
+This project uses Semantic Release with Conventional Commits. Please be sure to review our [Contributing Guidelines](https://auro.alaskaair.com/getting-started/developers/contributing) for more info.

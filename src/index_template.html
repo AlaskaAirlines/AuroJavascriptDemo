@@ -2,25 +2,71 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="webcomponents/webcomponents-loader.js" defer></script>
 
     <title>Web Components Demo</title>
   </head>
 
   <body>
     <main>
-      <h1 class="heading heading--display">Web Component Demo</h1>
-      <auro-checkbox-group required>
-        <span slot="legend" id="checkbox-legend"></span>
-        <auro-checkbox id="cbx1" name="cbxDemo" value="yes" required>
-          Yes
-        </auro-checkbox>
-        <auro-checkbox id="cbx2" name="cbxDemo" value="no" required>
-          No
-        </auro-checkbox>
-      </auro-checkbox-group>
-      <auro-button id="toast-button">Toast</auro-button>
-      <auro-button id="change-button">Change Toaster</auro-button>
+      <auro-header>JavaScript Web Component Demo</auro-header>
+      <form>
+        <auro-input label="First Name" id="fName"required></auro-input>
+        <auro-input label="First Name" id="lName"required></auro-input>
+        <br />
+        <auro-radio-group id="flierGroup" required>
+          <span slot="legend">
+            Have you ever flown with Alaska Air?
+          </span>
+          <auro-radio
+            id="flierYes"
+            label="Yes"
+            value="true">
+          </auro-radio>
+          <auro-radio
+            id="flierNo"
+            label="No"
+            value="false">
+          </auro-radio>
+        </auro-radio-group>
+        <auro-checkbox-group id="destinationGroup" class="util_displayHidden">
+          <span slot="legend">What destinations have you traveled to?</span>
+          <auro-checkbox
+            id="lower48"
+            name="lower48"
+            value="lower48">
+            Lower 48
+          </auro-checkbox>
+          <auro-checkbox
+            id="Alaska"
+            name="Alaska"
+            value="Alaska">
+            Alaska
+          </auro-checkbox>
+          <auro-checkbox
+            id="Hawaii"
+            name="Hawaii"
+            value="Hawaii">
+            Hawaii
+          </auro-checkbox>
+          <auro-checkbox
+            id="Canada"
+            name="Canada"
+            value="Canada">
+            Canada
+          </auro-checkbox>
+          <auro-checkbox
+            id="Mexico"
+            name="Mexico"
+            value="Mexico">
+            Mexico
+          </auro-checkbox>
+        </auro-checkbox-group>
+        <auro-button type="submit" id="submitButton" disabled>Submit</auro-button>
+      </form>
+      <br />
+      <div class="formDataWrapper">
+        Form Data: <span id="formData"></span>
+      </div>
     </main>
   </body>
 </html>
