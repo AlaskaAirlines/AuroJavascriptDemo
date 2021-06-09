@@ -1,5 +1,22 @@
 # Semantic Release Automated Changelog
 
+# [2.0.0](https://github.com/AlaskaAirlines/AuroJavascriptDemo/compare/v1.0.1...v2.0.0) (2021-06-09)
+
+
+### Bug Fixes
+
+* **data:** typo corrections ([cc0a1e2](https://github.com/AlaskaAirlines/AuroJavascriptDemo/commit/cc0a1e2427bb5127e5494850978cab0281113eee))
+
+
+### Features
+
+* **auro:** update to Auro components [#10](https://github.com/AlaskaAirlines/AuroJavascriptDemo/issues/10) ([b7391fd](https://github.com/AlaskaAirlines/AuroJavascriptDemo/commit/b7391fda10bc365ae1501fd9258d3256053ae77c))
+
+
+### BREAKING CHANGES
+
+* **auro:** Replace all Orion components with Auro Components
+
 ## [1.0.1](https://github.com/AlaskaAirlines/AuroJavascriptDemo/compare/v1.0.0...v1.0.1) (2020-07-16)
 
 
