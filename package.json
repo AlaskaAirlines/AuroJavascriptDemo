@@ -44,12 +44,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@commitlint/cli": "^9.1.1",
+    "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^9.1.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.0.5",
-    "semantic-release": "^17.1.1"
+    "semantic-release": "^21.0.1"
   },
   "release": {
     "branch": "master",
